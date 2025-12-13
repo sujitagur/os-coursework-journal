@@ -66,12 +66,12 @@ Below is a proper summary of all my commands, which are run directly on the serv
 1.	Memory Information – free -h
 
   	free -h analysis memory and swap usages and printed the result in human-readable units (Mib/ Gib). Here, my server VM has a total of 3.8 GB of RAM and mostly is available cause I have not run any heavy processes at this stage and also Swap: 0 B means no swap space is currently configured on the system.
- ![free1](./w1-free1.png) 	
+![free1](./w1-free1.png) 	
 
 2.   Disk Usage – df -h
 
       Using df -h, I have checked the disk layout and free space. The result shows that my root partition(/dev/sda2) is 25GB and only a small part(12%) is used after installation. The tmpfs filesystems, which are located in RAM and are restored upon reboot used for runtime operation and improve system performance by avoiding disk I/O. This means my server is cleanly configured and ready for operation.
-  ![df1](./w1-df1.png)
+![df1](./w1-df1.png)
 
 
 3.    Network Interfaces – ip addr
@@ -85,34 +85,39 @@ These IP addresses matter because I’ll be using the Host-Only IP later on when
 
 4.    Distribution Information - lsb_release -a
   
-When I run lsb_release -a, it confirms that the server is operating on Ubuntu Server 24.04.3. Plus, it aligns perfectly with the version I am using in my lab sessions, making it a easy to follow the documentation and keep up with class activities.
+      When I run lsb_release -a, it confirms that the server is operating on Ubuntu Server 24.04.3. Plus, it aligns perfectly with the version I am using in my         lab sessions, making it a easy to follow the documentation and keep up with class activities.
 ![lsb_release1](./w1-lsb1.png)
 
 5.	Kernel and System Information - uname -a
    
-The output from uname -a indicates that the server is running the Linux 6.8.x kernel on a 64-bit architecture. This reassures me that the system is current and ready to work with the tools I’ll need down the line.
+   The output from uname -a indicates that the server is running the Linux 6.8.x kernel on a 64-bit architecture. This reassures me that the system is current       and ready to work with the tools I’ll need down the line.
 ![uname1](./w1-uname1.png)
 
 ## Workstation – Ubuntu Desktop:
 1.	Kernel and System Information – uname -a
+
 The workstation is running a 64-bit Linux kernel, which is standard for Ubuntu 24.04LTS and supports modern hardware like for desktop use.
 ![uname2](./w1-uname2.png)
 
 2.	Memory Information - free -h
-The virtual machine is set up with 4GB of RAM, which is very little but still works fine for Ubuntu Desktop. Swap space is not enabled, which is standard for VirtualBox VMs unless you decide to set it up manually.
-![free2](./w1-free2.png) 
+
+ The virtual machine is set up with 4GB of RAM, which is very little but still works fine for Ubuntu Desktop. Swap space is not enabled, which is standard for     VirtualBox VMs unless you decide to set it up manually.
+ ![free2](./w1-free2.png) 
 
 3.	Storage information - df -h
-The workstation uses a 25GB virtual disk, offering plenty of free space for desktop applications and any lab work. We can see the root filesystem is neatly organised.
- ![df2](./w1-df2.png)
+
+The workstation uses a 25GB virtual disk, offering plenty of free space for desktop applications and any lab work. We can see the root filesystem is neatly       organised.
+![df2](./w1-df2.png)
 
 4.	Network Interfaces – ip addr
-The workstation is running on VirtualBox’s NAT networking, which means it gets an automatically assigned IP address (10.0.2.15) from internal DHCP. This setup works well for a desktop VM unless we need to enable communication between multiple VMs. In that case, we can switch to Host-Only or Internal networks.
+
+The workstation is running on VirtualBox’s NAT networking, which means it gets an automatically assigned IP address (10.0.2.15) from internal DHCP. This setup    works well for a desktop VM unless we need to enable communication between multiple VMs. In that case, we can switch to Host-Only or Internal networks.
 ![ip addr2](./w1-ipaddr2.png)
 
-5.	Distribution Information – lsb_release – a
+6.	Distribution Information – lsb_release – a
+
 This machine is running in Ubuntu 24.04.3 LTS, which means a long-term support version that’s stable and perfect for a workstation environment.
- ![lsb_release2](./w1-lsb2.png)
+![lsb_release2](./w1-lsb2.png)
 
 
 ## Overall Summary:
