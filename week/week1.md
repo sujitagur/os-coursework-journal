@@ -114,9 +114,10 @@ The workstation uses a 25GB virtual disk, offering plenty of free space for desk
 The workstation is running on VirtualBox’s NAT networking, which means it gets an automatically assigned IP address (10.0.2.15) from internal DHCP. This setup    works well for a desktop VM unless we need to enable communication between multiple VMs. In that case, we can switch to Host-Only or Internal networks.
 ![ip addr2](./w1-ipaddr2.png)
 
-6.	Distribution Information – lsb_release – a
+5.	Distribution Information – lsb_release – a
 
 This machine is running in Ubuntu 24.04.3 LTS, which means a long-term support version that’s stable and perfect for a workstation environment.
+
 ![lsb_release2](./w1-lsb2.png)
 
 
