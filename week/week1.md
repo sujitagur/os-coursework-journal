@@ -46,7 +46,7 @@ The second network adapter is set to Host-Only, creating a private virtual netwo
 Host-Only network keeps the server isolated from external networks, only connecting to my workstation. This means only communication between virtual machines on the same host.
 
 Having a Host-Only network is key because it keeps the server completely isolated from external networks, ensuring that only my workstation can connect to it. This aligns with the module’s requirement that all server administration must be done remotely over a secure connection.
-![Adapter 2 (Host-Only)](.w1-adapter2.png)
+![Adapter 2 (Host-Only)](./w1-adapter2.png)
 
 Why does this setup work?
 
