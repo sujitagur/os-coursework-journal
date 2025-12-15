@@ -1,6 +1,6 @@
 # Phase 1: System Planning and Distribution Selection (Week 1)
 
-This week, I will focus on building a reliable virtualised environment for the rest of the coursework. I have set up two virtual machines inside Oracle VirtualBox on my Windows host system:  
+  This week, I will focus on building a reliable virtualised environment for the rest of the coursework. I have set up two virtual machines inside Oracle VirtualBox on my Windows host system:  
 
 •	Workstation VM: Ubuntu Desktop 24.04
 
@@ -45,7 +45,7 @@ I picked Ubuntu for several reasons:
 
 ## PART C: Workstation Configuration decision:
  
- I have chosen Ubuntu Desktop as my workstation environment compared to a Windows host or a hybrid setup. Reason:
+  I have chosen Ubuntu Desktop as my workstation environment compared to a Windows host or a hybrid setup. Reason:
 
  WHY UBUNTU DESKTOP IS THE BEST CHOICE?
 
@@ -64,7 +64,7 @@ Why not choose a Windows host directly?
 •	The industry standard, particularly for server environments, is Linux-to-Linux administration. 
 
 ## Part D: Network Configuration Documentation:
-In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, providing screenshots to illustrate the process.
+  In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, providing screenshots to illustrate the process.
 
 D.1 VirtualBox Network Adapters – Workstation VM
 
@@ -97,7 +97,7 @@ This shows the Host-Only network adapter(vboxnet0), IPv4 address 192.168.56.1 an
 This address ensures that all VMs are connected to the Host-Only network.
 
 DHCP Server settings:
-![DHCP 1 (Host-Only)](./w1-DHCCP1.png)
+![DHCP 1 (Host-Only)](./w1-DHCP1.png)
 •	The DHCP Server for vboxnet0 is enabled and addresses between 192.168.56.101 -192.168.56.254.
 
 •	My server VM (192.168.56.102) and workstation VM (192.168.56.103) both use Ips inside this range.
@@ -108,7 +108,7 @@ DHCP Server settings:
 
 ## Part E: System Specifications:
 
-As required by the coursework, I used the baseline to gather hardware and OD data to record the baseline configuration of the Ubuntu Server VM using the required CLI tools.
+  As required by the coursework, I used the baseline to gather hardware and OD data to record the baseline configuration of the Ubuntu Server VM using the required CLI tools.
 
 1.	Memory Information
 
@@ -131,7 +131,7 @@ Purpose: It displays disk layout and free space in a human-readable format
 
 ![df1](./w1-df1.png)
 
-The result shows the root filesystem (/dev/sda2) is 25GB total with only 12% being used. This confirms that I have plenty of space for the future and is cleanly configured.
+ The result shows the root filesystem (/dev/sda2) is 25GB total with only 12% being used. This confirms that I have plenty of space for the future and is cleanly configured.
 
 3. Distribution Information
 
@@ -180,11 +180,12 @@ Result:
 •	enp0s8 (Host-Only): 192.168.56.103
 
 Why these matters
-These results confirm that an isolated Host-Only network has successfully connected both virtual machines. This setup ensures that all administration server is run remotely via SSH, meet the necessary architectural and security requirements.
+
+ These results confirm that an isolated Host-Only network has successfully connected both virtual machines. This setup ensures that all administration server is run remotely via SSH, meet the necessary architectural and security requirements.
 
 
 ## WEEK 1: REFLECTION:
-This week was all about the foundation for the entire coursework journey by setting up both machines and configuring the network correctly. The main challenge was setting up the virtual networking environment correctly. After running all the code, I then realised my workstation virtual machine is missing the interface(enp0s8), and a conflicting netplan configuration was caused due to VirtualBox failing to assign the Host-Only interface. This problem was fixed by rebuilding the workstation virtual machine and readjusting the Host-Only network.
+ This week was all about the foundation for the entire coursework journey by setting up both machines and configuring the network correctly. The main challenge was setting up the virtual networking environment correctly. After running all the code, I then realised my workstation virtual machine is missing the interface(enp0s8), and a conflicting netplan configuration was caused due to VirtualBox failing to assign the Host-Only interface. This problem was fixed by rebuilding the workstation virtual machine and readjusting the Host-Only network.
 Even though this part with annoying, it gave me a clear understanding of how Linux networking depends on both OS-level configuration and hypervisor settings. Additionally, I also gained some experience with Netplan, network adapters, DHCP, and interface naming, which are crucial for performance testing, monitoring scripts, and SSH hardening in the future.
 Overall, considering all the things week 1 gave me a strong technical foundation and understand how a virtualised network environment works in a real system.
 
