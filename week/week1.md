@@ -15,7 +15,8 @@ Both VMS are connected using a dual-adapter configuration:
 ## Part A - System Architecture Diagram:
 ![Architecture Diagram](./w1-architecture.png)
 
-This dual-adapter design ensures the server is reachable only form the workstation, replicating a secure administration model used in real data centres.
+This dual-adapter design ensures the server is reachable only from
+the workstation, replicating a secure administration model used in real data centres.
 
 ## Part B - Distribution Selection Justification:
 Linux Distribution Family Comparison:
