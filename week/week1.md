@@ -197,8 +197,8 @@ Overall, considering all the things week 1 gave me a strong technical foundation
 [2] Oracle Corporation, "VirtualBox User Manual - Chapter 6: Virtual Networking," 2024.
     Available: https://www.virtualbox.org/manual/ch06.html. Accessed: 15 Dec 2025.
 
-[3]  W. Van Hecke, “24 Best Command Line Performance Monitoring Tools for Linux,” 
-     LinuxTechi, 2024. Available: https://www.linuxtechi.com/command-line-performance-monitoring-tools-linux/. Accessed: 15 Dec 2025
+[3] Canonical Ltd.,  "Ubuntu Desktop 24.04 LTS Documentation," 2024.
+    Available: https://ubuntu.com/desktop. Accessed: 15 Dec 2025.
 
 [4] Linux Foundation, "Linux Manual Pages: uname(1), free(1), df(1), ip(8)," 2024.
     Available: https://man7.org/linux/man-pages/. Accessed:15 Dec 2025.
@@ -206,8 +206,8 @@ Overall, considering all the things week 1 gave me a strong technical foundation
 [5] Canonical Ltd., "Netplan- Official Configuration Reference," 2024.
     Available: https://netplan.io/reference. Accessed: 15 Dec 2025.
 
-[6] MOSS, "How to Monitor Ubuntu Server Performance,"
-    2024. Available: Https://www.moss.sh/blog/how-to-monitor-ubuntu-server-performance/. Accessed: 15 Dec 2025
+[6] Oracle Corporation, "VirtualBox Host-Only Networking Explained," 2024.
+    Available: https://www.virtualbox.org/manual/ch06.html#network_hostonly. Accessed: 15 Dec 2025.
       
  [ Back to Home](../index.md)  
 
