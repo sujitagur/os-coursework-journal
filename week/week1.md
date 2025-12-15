@@ -64,39 +64,51 @@ Why not choose a Windows host directly?
 •	The industry standard, particularly for server environments, is Linux-to-Linux administration. 
 
 ## Part D: Network Configuration Documentation:
-For my Network setup, I used two network adapters:  NAT and Host-Only. 
+In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, with screenshots of it.
+
+D.1 VirtualBox Network Adapters – Workstation VM
 
 Adapter 1 — NAT (Internet Access)
 
-The first adapter is set to NAT, which provides internet access through the host machine to download, security updates, and package installation. 
-
+The first adapter is set to NAT, which provides internet access through the host machine to download, security updates, and package installation.
 ![Adapter 1 (NAT)](./w1-adapter1.png)
 
 Adapter 2 — Host-Only Network (Private SSH Network)
 
-The second network adapter is set to Host-Only, a private virtual network between the workstation VM and the server VM. 
-
+The second network adapter is set to Host-Only, which connects the workstation directly to the server VM inside and isolates the VirtualBox subnet.
 ![Adapter 2 (Host-Only)](./w1-adapter2.png)
 
-Host-Only Network:
+D.2 VirtualBox Network Adapters – Server VM
 
-•	IPv4 Network: 192.168.56.0/24
+Adapter 1: NAT
+The first network adapter is a NAT similar to that in a workstation, and it is for external package updates.
+![Adapter 3 (Host-Only)](./w1-adapter3.png)
 
-•	Host Adapter: 192.168.56.1
+Adapter 2: Host-Only
+The second network adapter is set to Host-Only, for private SSH access for the workstation. This ensures the server is isolated and cannot be accessed from outside the host-only network.
+![Adapter 4 (Host-Only)](./w1-adapter4.png)
 
-•	DHCP Range: 192.168.56.101 – 192.168.56.254
 
-Final IP Addresses:
+D.3 Host-Only Network Configuration(vboxnet0):
 
-•	Workstation VM (enp0s8): 192.168.56.103
+Adapter Settings:
+![Adapter S (Host-Only)](./w1-adapterS.png)
+This shows the Host-Only network adapter(vboxnet0), IPv4 address 192.168.56.1 and IPv4 Network Mask 255.255.255.0.
+This address ensures that all VMs are connected to the Host-Only network.
 
-•	Server VM (enp0s8): 192.168.56.102
+DHCP Server settings:
+![DHCP 1 (Host-Only)](./w1-DHCCP1.png)
+•	The DHCP Server for vboxnet0 is enabled and addresses between 192.168.56.101 -192.168.56.254.
+
+•	My server VM (192.168.56.102) and workstation VM (192.168.56.103) both use Ips inside this range.
+
+•	This ensures reliable, private, isolated communication via SSH for testing.
+
+
 
 ## Part E: System Specifications:
 
-Ubuntu server:
-
-As required by the coursework, I used the baseline to gather hardware and OD data to record the baseline configuration of the Ubuntu server 
+As required by the coursework, I used the baseline to gather hardware and OD data to record the baseline configuration of the Ubuntu Server VM using the required CLI tools.
 
 1.	Memory Information
 
@@ -167,12 +179,15 @@ Result:
 
 •	enp0s8 (Host-Only): 192.168.56.103
 
-Why this is important:
+Why these matters
+These results confirm that an isolated Host-Only network has successfully connected both virtual machines. This setup ensures that all administration server is run remotely via SSH, meet the necessary architectural and security requirements.
 
-These results verify that an isolated Host-Only network has been used correctly on both virtual machines. This setup ensures that all administration of the server is performed remotely via SSH, meeting the required security and architectural constraints.
 
-## REFLECTION:
-This week was all about the foundation for the entire coursework by setting up both virtual machines and configuring the network correctly. I initially faced some issues with VirtualBox, especially with the network adapter and the server installation freezing, but after working and understanding the problems, I have learn important of correct VM settings. Setting up Ubuntu Server in a headless environment pushed me to fully rely on the command line, which boosted my confidence with basic Linux commands. I have also gathered system information using tools like free, df, ip addr and uname gave me a solid baseline which use in later weeks to analyse.
+## WEEK 1: REFLECTION:
+This week was all about the foundation for the entire coursework journey by setting up both machines and configuring the network correctly. The main challenge was setting up the virtual networking environment correctly. After running all the code, I then realize my workstation virtual machine is missing interface(enp0s8) and conflicting netplan configuration caused due to VirtualBox failed to assign the Host-Only interface. This problem was fixed by rebuilding the workstation virtual machine and readjusting the Host-Only network.
+Even though this part with annoying it gave me clear understanding how Linux networking depends on both 0S-level configuration and hypervisor setting. Additionally, I also gained some experience with Netplan, network adapter, DHCP, and interface naming which are crucial for performance testing, monitoring scripts, and SSH hardening in the future.
+Overall, considering all the things week 1 gave me a strong technical foundation and explained how virtualized network environment works in real system.
+
 
       
  [ Back to Home](../index.md)  
