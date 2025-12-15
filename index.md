@@ -2,7 +2,7 @@
 This website  documents my weekly progress for the operating systems module: system setup, security configuration, scripting, and performance testing
 
 ## Table of Contents 
-- Week 1- System Planning and Distribution Selection
+- [Week 1 – System Setup & Architecture](week/week1.md)
 - Week 2 - Security Planning and Testing Methodology
 - Week 3 - Application Selection for Performance Testing 
 - Week 4 - Initial Security Configuration & Security Implementation
