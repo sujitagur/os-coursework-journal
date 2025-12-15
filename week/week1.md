@@ -13,7 +13,7 @@ Both VMS are connected using a dual-adapter configuration:
 •	Adapter 2- Host-Only Network: provides a private, isolated internal network that exist only between the workstation to the server.
 
 ## Part A - System Architecture Diagram:
-![Architecture Diagram](./w1-architecture.png)
+![Architecture Diagram](./w1-architecture1.png)
 
 This dual-adapter design ensures the server is reachable only from
 the workstation, replicating a secure administration model used in real data centres.
@@ -64,7 +64,7 @@ Why not choose a Windows host directly?
 •	The industry standard, particularly for server environments, is Linux-to-Linux administration. 
 
 ## Part D: Network Configuration Documentation:
-In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, with screenshots of it.
+In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, providing screenshots to illustrate the process.
 
 D.1 VirtualBox Network Adapters – Workstation VM
 
@@ -171,7 +171,7 @@ Result:
 
 Workstation VM Output:
 
-![ip addr2](./w1-ipaddr2.png)
+![ip addr2](./w1-ipaddr3.png)
 
 Result:
 
@@ -184,9 +184,9 @@ These results confirm that an isolated Host-Only network has successfully connec
 
 
 ## WEEK 1: REFLECTION:
-This week was all about the foundation for the entire coursework journey by setting up both machines and configuring the network correctly. The main challenge was setting up the virtual networking environment correctly. After running all the code, I then realize my workstation virtual machine is missing interface(enp0s8) and conflicting netplan configuration caused due to VirtualBox failed to assign the Host-Only interface. This problem was fixed by rebuilding the workstation virtual machine and readjusting the Host-Only network.
-Even though this part with annoying it gave me clear understanding how Linux networking depends on both 0S-level configuration and hypervisor setting. Additionally, I also gained some experience with Netplan, network adapter, DHCP, and interface naming which are crucial for performance testing, monitoring scripts, and SSH hardening in the future.
-Overall, considering all the things week 1 gave me a strong technical foundation and explained how virtualized network environment works in real system.
+This week was all about the foundation for the entire coursework journey by setting up both machines and configuring the network correctly. The main challenge was setting up the virtual networking environment correctly. After running all the code, I then realised my workstation virtual machine is missing the interface(enp0s8), and a conflicting netplan configuration was caused due to VirtualBox failing to assign the Host-Only interface. This problem was fixed by rebuilding the workstation virtual machine and readjusting the Host-Only network.
+Even though this part with annoying, it gave me a clear understanding of how Linux networking depends on both OS-level configuration and hypervisor settings. Additionally, I also gained some experience with Netplan, network adapters, DHCP, and interface naming, which are crucial for performance testing, monitoring scripts, and SSH hardening in the future.
+Overall, considering all the things week 1 gave me a strong technical foundation and understand how a virtualised network environment works in a real system.
 
 
       
