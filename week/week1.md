@@ -189,7 +189,25 @@ Why these matters
 Even though this part with annoying, it gave me a clear understanding of how Linux networking depends on both OS-level configuration and hypervisor settings. Additionally, I also gained some experience with Netplan, network adapters, DHCP, and interface naming, which are crucial for performance testing, monitoring scripts, and SSH hardening in the future.
 Overall, considering all the things week 1 gave me a strong technical foundation and understand how a virtualised network environment works in a real system.
 
+## References :
 
+[1] Canonical Ltd., "Ubuntu Server 24.04 LTS Documentation," 2024.
+    Available: https://ubuntu.com/server/docs. Accessed: 15 Dec 2025
+    
+[2] Oracle Corporation, "VirtualBox User Manual - Chapter 6: Virtual Networking," 2024.
+    Available: https://www.virtualbox.org/manual/ch06.html. Accessed: 15 Dec 2025.
+
+[3]  W. Van Hecke, “24 Best Command Line Performance Monitoring Tools for Linux,” 
+     LinuxTechi, 2024. Available: https://www.linuxtechi.com/command-line-performance-monitoring-tools-linux/. Accessed: 15 Dec 2025
+
+[4] Linux Foundation, "Linux Manual Pages: uname(1), free(1), df(1), ip(8)," 2024.
+    Available: https://man7.org/linux/man-pages/. Accessed:15 Dec 2025.
+
+[5] Canonical Ltd., "Netplan- Official Configuration Reference," 2024.
+    Available: https://netplan.io/reference. Accessed: 15 Dec 2025.
+
+[6] MOSS, "How to Monitor Ubuntu Server Performance,"
+    2024. Available: Https://www.moss.sh/blog/how-to-monitor-ubuntu-server-performance/. Accessed: 15 Dec 2025
       
  [ Back to Home](../index.md)  
 
