@@ -6,62 +6,47 @@
 
 •	Server VM: Ubuntu Server 24.04
 
-Both VMS are connected using a dual-adapter configuration:
+Both VMs are connected using a dual-adapter configuration:
 
 •	Adapter 1- NAT: provide internet access for installation and updates.
 
-•	Adapter 2- Host-Only Network: provides a private, isolated internal network that exist only between the workstation to the server.
+•	Adapter 2- Host-Only Network: provides a private, isolated internal network that exists only between the workstation and the server.
 
 ## Part A - System Architecture Diagram:
 ![Architecture Diagram](./w1-architecture1.png)
 
-This dual-adapter design ensures the server is reachable only from
-the workstation, replicating a secure administration model used in real data centres.
+The system architecture follows a dual-system administration model containing a Linux workstation and a headless Linux server. The server does not expose a graphical interface and is managed exclusively via SSH.
+
+Here, both virtual machines are connected via two network interfaces: a Host-Only adapter provides an isolated management network, while a NAT adapter enables outbound internet access. To ensure that the server is inaccessible from the external network, SSH communication occurs strictly over the Host-Only interface.
+
+This setup is similar to how real cloud servers are managed, where servers are accessed through a private network rather than directly from the internet. It also ensures that all server administration occurs remotely. 
 
 ## Part B - Distribution Selection Justification:
 Linux Distribution Family Comparison:
 |Family         |Example | Strengths |   weakness| Reason Not Selected |
 |---------------|--------|-----------|-----------|---------------------|
-|Debian Family  |Debian , Ubuntu|Very Stable,widely Supported |Debian packages are often outdated |Ubuntu offer stability +fresher packages|
-|Red Hat Family |	RHEL, CentOS stream|	Enterprise-grade tools	|CentOS Stream changes too frequently |Overkill for small VM environment|
-|Arch Family	|Arch Linux, Manjiro 	|Very flexible and up-to-date 	|Requires a lot of manual setup |Not Ideal for a server workload|
-|SUSE Family	|OpenSUSE, SLES|	Powerful admin tools 	|More complex for beginners |Minimal learning resources|
+|Debian Family   |Debian , Ubuntu|High stability, strong community |Debian packages are often outdated |Ubuntu offer stability with newer kernels and tooling|
+|Red Hat Family |	RHEL, CentOS stream|	Enterprise-grade tools, SELinux	|CentOS Stream changes too frequently which reduce predictability |Complexity for a contolled VM-based coursework|
+|Arch Family	|Arch, Manjiro 	|Very flexible and up-to-date pacakages 	|Requires a lot of manual setup, high maintenance |Not Ideal security testing due to risk of instability|
+|SUSE Family	|OpenSUSE, SLES|	Powerful admin tools 	|More complex for beginners |Limited benefit relatives to coursework requirements|
 
 WHY I CHOSE UBUNTU SERVER 24.04.LTS:
 
-I picked Ubuntu for several reasons:
+I picked Ubuntu Server 24.04 LTS  due to its balance of stability, security and up-to-date features. The LTS provides five years of security updates, which is essential for maintaining a consistent security baseline throughout the coursework.
 
-•	LTS reliability: It provides long-term support with five years of security updates.
+Ubuntu also includes AppArmor enabled by default, directly supports the mandatory access control required in later phases without additional configuration complexity. Furthermore, Ubuntu have strong documentation and industry adoption in cloud platforms such as AWS and Azure, ensuring that configuration practices used in this coursework are professional standards.
 
-•	Strong documentation: Reliable for commands, services and hardening procedures
+  Even though other distributions offer stronger enterprise tooling, they come with unnecessary complexity for a controlled virtualised environment, which is required for this coursework and also provide zero benefits.
 
-•	Included AppArmor by default: required access control for later in my project.
-
-•	Simple and dependable networking: For a headless environment, Netplan with system-networkd is perfect.
-
-•	Industry relevance: Due to Ubuntu’s dominance of cloud platforms (AWS, Azure and GCP), this setup is professionally valuable. 
-
- Lastly, considering all the above reasons, Ubuntu server provides simple, secure and up-to-date features.
 
 ## PART C: Workstation Configuration decision:
  
-  I have chosen Ubuntu Desktop as my workstation environment compared to a Windows host or a hybrid setup. Reason:
+  I have selected Ubuntu Desktop 24.04 as my workstation environment to ensure native compatibility with Linux administration tools such as SSH, system monitoring utilities and Bash scripting. Using a Linux-based workstation minimises command inconsistencies and makes troubleshooting easier.
+  
+  The additional CPU and memory overhead of operating a desktop virtual machine is a known trade-off of this strategy. However, this cost is reasonable as the  workstation VM is used exclusively for administration and monitoring, and the host system provides sufficient resources.
 
- WHY UBUNTU DESKTOP IS THE BEST CHOICE?
-
-•	Native Linux tooling:  It included SSH, client, package managers, monitoring tools, and scripting support by default.
-
-•	Consistency: Using Linux on both virtual machines (VMs) minimises command mismatches and makes troubleshooting easier.
-
-•	Safe separation: To avoid accidental configuration on the wrong system, the workstation (VMs) isolates all administrative activity from the Windows host.
-
-•	Ideal for scripting week: Bash scripts behave consistently on both the  workstation and server.
-
-Why not choose a Windows host directly?
-
-•	For SSH, Windows uses PowerShell PuTTY, which makes later scripting and automation tasks more difficult.
-
-•	The industry standard, particularly for server environments, is Linux-to-Linux administration. 
+  Using a Linux workstation also reduces the risk of accidental configuration changes on the Windows host system and ensures consistent behaviour when developing and executing scripts that will later run against the server.  
+  
 
 ## Part D: Network Configuration Documentation:
   In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, providing screenshots to illustrate the process.
@@ -104,11 +89,14 @@ DHCP Server settings:
 
 •	This ensures reliable, private, isolated communication via SSH for testing.
 
-
+Overall, this network configuration enforces a strict separation between external connectivity and administrative access. By ensuring that SSH traffic is confined to the Host-Only network, the server is protected from unintended exposure while still retaining controlled internet access for updates. This design directly supports later firewall hardening and intrusion prevention tasks, where access will be restricted to a single trusted workstation.
 
 ## Part E: System Specifications:
+The following system measurements establish a baseline reference point against which performance and resource utilisation will be evaluated in later phases. Capturing this baseline ensures that changes in CPU, memory, disk, and network behaviour can be attributed to specific workloads or security controls rather than initial configuration differences.
 
-  As required by the coursework, I used the baseline to gather hardware and OD data to record the baseline configuration of the Ubuntu Server VM using the required CLI tools.
+At this stage, swap is intentionally disabled to allow direct observation of memory pressure during performance testing, avoiding masked behaviour caused by disk-based swapping.
+ 
+  As required by the coursework, I used the baseline to gather hardware and OS data to record the baseline configuration of the Ubuntu Server VM using the required CLI tools.
 
 1.	Memory Information
 
@@ -119,8 +107,8 @@ DHCP Server settings:
  ![free1](./w1-free1.png) 
 
  Summary:
-
-  Here, the VM has a total of 3.8 GB of RAM and mostly is free since no heavy processes         have been run yet. Swap is not set up. This confirms that the server has enough capacity      for further performance workload and monitoring 
+The server is allocated approximately 3.8 GB of RAM, with minimal usage at baseline due to the absence of active workloads. This provides sufficient headroom for essential security services such as SSH, firewall rules, and fail2ban, while still allowing controlled stress and application testing in later phases. Monitoring memory behaviour without swap enabled will allow clearer identification of memory saturation and performance degradation under load.
+  
 
 
 2. Disk Usage
@@ -131,7 +119,7 @@ Purpose: It displays disk layout and free space in a human-readable format
 
 ![df1](./w1-df1.png)
 
- The result shows the root filesystem (/dev/sda2) is 25GB total with only 12% being used. This confirms that I have plenty of space for the future and is cleanly configured.
+ The result shows the root filesystem (/dev/sda2) is 25GB total with only 12% being used. This confirms that sufficient disk capacity is available for log generation, security auditing tools (e.g. Lynis), application installation, and performance testing without risking storage-related bottlenecks.
 
 3. Distribution Information
 
@@ -167,7 +155,7 @@ Result:
 
 •	enp0s3 (NAT): 10.0.2.15
 
-•	enpos8(Host-Only): 193.164.56.102
+•	enp0s8(Host-Only): 192.168.56.102
 
 Workstation VM Output:
 
@@ -179,15 +167,19 @@ Result:
 
 •	enp0s8 (Host-Only): 192.168.56.103
 
-Why these matters
+Why This Matters
 
  These results confirm that an isolated Host-Only network has successfully connected both virtual machines. This setup ensures that all administration server is run remotely via SSH, meet the necessary architectural and security requirements.
 
 
 ## WEEK 1: REFLECTION:
- This week was all about the foundation for the entire coursework journey by setting up both machines and configuring the network correctly. The main challenge was setting up the virtual networking environment correctly. After running all the code, I then realised my workstation virtual machine is missing the interface(enp0s8), and a conflicting netplan configuration was caused due to VirtualBox failing to assign the Host-Only interface. This problem was fixed by rebuilding the workstation virtual machine and readjusting the Host-Only network.
-Even though this part with annoying, it gave me a clear understanding of how Linux networking depends on both OS-level configuration and hypervisor settings. Additionally, I also gained some experience with Netplan, network adapters, DHCP, and interface naming, which are crucial for performance testing, monitoring scripts, and SSH hardening in the future.
-Overall, considering all the things week 1 gave me a strong technical foundation and understand how a virtualised network environment works in a real system.
+
+ The primary challenge during this phase was configuring the Host-Only network correctly. Initially, the workstation VM failed to receive the secondary interface due to a misalignment between VirtualBox adapter settings and the guest OS network configuration. This resulted in a missing enp0s8 interface and prevented private SSH communication.
+ 
+Resolving this issue required understanding that Linux networking is dependent not only on operating system configuration but also on hypervisor-level networking. Rebuilding the workstation VM and reapplying the Host-Only adapter corrected the issue.
+
+  This experience taught me the importance of validating infrastructure assumptions early in system deployment. A misconfigured network at this stage would invalidate all subsequent security hardening and performance testing. As a result, this week established a reliable foundation for remote administration, monitoring, and security enforcement in later phases.
+ 
 
 ## References :
 
