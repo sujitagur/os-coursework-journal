@@ -56,11 +56,13 @@ D.1 VirtualBox Network Adapters – Workstation VM
 Adapter 1 — NAT (Internet Access)
 
 The first adapter is set to NAT, which provides internet access through the host machine to download, security updates, and package installation.
+
 ![Adapter 1 (NAT)](./w1-adapter1.png)
 
 Adapter 2 — Host-Only Network (Private SSH Network)
 
 The second network adapter is set to Host-Only, which connects the workstation directly to the server VM inside and isolates the VirtualBox subnet.
+
 ![Adapter 2 (Host-Only)](./w1-adapter2.png)
 
 D.2 VirtualBox Network Adapters – Server VM
