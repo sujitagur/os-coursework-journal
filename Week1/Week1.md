@@ -13,7 +13,7 @@ Both VMs are connected using a dual-adapter configuration:
 •	Adapter 2- Host-Only Network: provides a private, isolated internal network that exists only between the workstation and the server.
 
 ## Part A - System Architecture Diagram
-![Architecture Diagram](./w1-architecture1.png)
+![Architecture Diagram](Week1-image/w1-architecture1.png)
 
 The system architecture follows a dual-system administration model containing a Linux workstation and a headless Linux server. The server does not expose a graphical interface and is managed exclusively via SSH.
 
@@ -59,46 +59,46 @@ Ubuntu also includes AppArmor enabled by default, directly supports the mandator
 
 **D.1 VirtualBox Network Adapters – Workstation VM**
 
-Adapter 1 — NAT (Internet Access)
+**Adapter 1 — NAT (Internet Access)**
 
 The first adapter is set to NAT, which provides internet access through the host machine to download, security updates, and package installation.
 
-![Adapter 1 (NAT)](./w1-adapter1.png)
+![Adapter 1 (NAT)](Week1-image/w1-adapter1.png)
 
-Adapter 2 — Host-Only Network (Private SSH Network)
+**Adapter 2 — Host-Only Network (Private SSH Network)**
 
 The second network adapter is set to Host-Only, which connects the workstation directly to the server VM inside and isolates the VirtualBox subnet.
 
-![Adapter 2 (Host-Only)](./w1-adapter2.png)
+![Adapter 2 (Host-Only)](Week1-image/w1-adapter2.png)
 
 **D.2 VirtualBox Network Adapters – Server VM**
 
-Adapter 1: NAT
+**Adapter 1: NAT**
 
 The first network adapter is a NAT similar to that in a workstation, and it is for external package updates.
 
-![Adapter 3 (Host-Only)](./w1-adapter3.png)
+![Adapter 3 (Host-Only)](Week1-image/w1-adapter3.png)
 
-Adapter 2: Host-Only
+**Adapter 2: Host-Only**
 
 The second network adapter is set to Host-Only, for private SSH access for the workstation. This ensures the server is isolated and cannot be accessed from outside the host-only network.
 
-![Adapter 4 (Host-Only)](./w1-adapter4.png)
+![Adapter 4 (Host-Only)](Week1-image/w1-adapter4.png)
 
 
 **D.3 Host-Only Network Configuration(vboxnet0)**
 
-Adapter Settings:
+**Adapter Settings:**
 
-![Adapter S (Host-Only)](./w1-adapterS.png)
+![Adapter S (Host-Only)](Week1-image/w1-adapterS.png)
 
 This shows the Host-Only network adapter(vboxnet0), IPv4 address 192.168.56.1 and IPv4 Network Mask 255.255.255.0.
 
 This address ensures that all VMs are connected to the Host-Only network.
 
-DHCP Server settings:
+**DHCP Server settings:**
 
-![DHCP 1 (Host-Only)](./w1-DHCP1.png)
+![DHCP 1 (Host-Only)](Week1-image/w1-DHCP1.png)
 
 •	The DHCP Server for vboxnet0 is enabled and addresses between 192.168.56.101 -192.168.56.254.
 
@@ -108,6 +108,8 @@ DHCP Server settings:
 
 Overall, this network configuration enforces a strict separation between external connectivity and administrative access. By ensuring that SSH traffic is confined to the Host-Only network, the server is protected from unintended exposure while still retaining controlled internet access for updates. This design directly supports later firewall hardening and intrusion prevention tasks, where access will be restricted to a single trusted workstation.
 
+---
+
 ## Part E: System Specifications:
 The following system measurements establish a baseline reference point against which performance and resource utilisation will be evaluated in later phases. Capturing this baseline ensures that changes in CPU, memory, disk, and network behaviour can be attributed to specific workloads or security controls rather than initial configuration differences.
 
@@ -115,55 +117,55 @@ At this stage, swap is intentionally disabled to allow direct observation of mem
  
   As required by the coursework, I used the baseline to gather hardware and OS data to record the baseline configuration of the Ubuntu Server VM using the required CLI tools.
 
-1.	Memory Information
+**1.	Memory Information**
 
- Command: free -h
+ Command: 'free -h'
 
  Purpose: Analyse memory and swap usages and print the result in human-readable units (Mib/    Gib). 
   	
- ![free1](./w1-free1.png) 
+ ![free1](Week1-image/w1-free1.png) 
 
 The server is allocated approximately 3.8 GB of RAM, with minimal usage at baseline due to the absence of active workloads. This provides sufficient headroom for essential security services such as SSH, firewall rules, and fail2ban, while still allowing controlled stress and application testing in later phases. Monitoring memory behaviour without swap enabled will allow clearer identification of memory saturation and performance degradation under load.
   
-2. Disk Usage
+**2. Disk Usage**
 
-Command:  df -h
+Command:  'df -h'
 
 Purpose: It displays disk layout and free space in a human-readable format 
 
-![df1](./w1-df1.png)
+![df1](Week1-image/w1-df1.png)
 
  The result shows the root filesystem (/dev/sda2) is 25GB total with only 12% being used. This confirms that sufficient disk capacity is available for log generation, security auditing tools (e.g. Lynis), application installation, and performance testing without risking storage-related bottlenecks.
 
-3. Distribution Information
+**3. Distribution Information**
 
-Command: lsb_release -a
+Command: 'lsb_release -a'
  
 Purpose: It confirmed the operating system version 
 
-![lsb_release1](./w1-lsb1.png)
+![lsb_release1](Week1-image/w1-lsb1.png)
 
 Summary: The server is running Ubuntu Server 24.04.3 LTS (noble)
 
-4. Kernel and System Information
+**4. Kernel and System Information**
 
-Command: uname -a
+Command: 'uname -a'
    
 Purpose: Display kernel version and system architecture
 
-![uname1](./w1-uname1.png)
+![uname1](Week1-image/w1-uname1.png)
 
 Summary: Kernel version: 6.8.0-40-generic on x86_64 architecture 
 
-5. Network Interfaces
+**5. Network Interfaces**
 
-Command: ip addr
+Command: 'ip addr'
 
 Purpose: Display all network interfaces and assigned IP addresses. Used to validate Correct VirtualBox networking(NAT + Host-Only).
 
 Server VM Output:     
 
-![ip addr1](./w1-ipaddr1.png)
+![ip addr1](Week1-image/w1-ipaddr1.png)
 
 Result:
 
@@ -173,7 +175,7 @@ Result:
 
 Workstation VM Output:
 
-![ip addr2](./w1-ipaddr3.png)
+![ip addr2](Week1-image/w1-ipaddr3.png)
 
 Result:
 
@@ -185,6 +187,7 @@ Result:
 
  These results confirm that an isolated Host-Only network has successfully connected both virtual machines. This setup ensures that all administration server is run remotely via SSH, meet the necessary architectural and security requirements.
 
+---
 
 ## WEEK 1: REFLECTION:
 
@@ -194,6 +197,7 @@ Resolving this issue required understanding that Linux networking is dependent n
 
 This experience taught me the importance of validating infrastructure assumptions early in system deployment. A misconfigured network at this stage would invalidate all subsequent security hardening and performance testing. As a result, this week established a reliable foundation for remote administration, monitoring, and security enforcement in later phases.
  
+---
 
 ## References :
 
