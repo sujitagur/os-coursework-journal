@@ -1,11 +1,11 @@
 ## Phase 2: Security Planning and Testing Methodology (WEEK – 2)
-Week 2 focuses on planning the security baseline and performance testing methodology before making any changes to the server. Rather than configuring directly, this phase establishes a structured approach to monitoring system behavior and enforcing security controls in later weeks. Security planning in advance ensures consistent, measurable and aligned with both security and performance objectives. 
+Week 2 focuses on planning the security baseline and performance testing methodology before making any configuration changes to the server. Rather than configuring services directly, this phase establishes a structured and measurable approach to monitoring system behaviour and enforcing security controls in later weeks. Planning security and performance in advance ensures that future changes are consistent, measurable, and aligned with both security and performance objectives.
 
 
 ## Performance testing plan:
-All performance monitoring will be conducted remotely from the Ubuntu Workstation using SSH, in line with the coursework requirement that the server remains headless and is administered remotely. I will collect performance data during baseline, load, and post optimization stages to compare system behavior under different conditions.
+All performance monitoring will be conducted remotely from the Ubuntu workstation using SSH, in line with the coursework requirement that the server remains headless and administered remotely. Performance data will be collected during baseline, load, and post-optimisation stages to allow comparison of system behaviour under different conditions.
 
-The goal of this performance testing plan is to observe how CPU, memory, disk, I/O and network performance changes as workloads are add and security controls are enabled.
+The objective of this testing plan is to observe how CPU, memory, disk I/O, and network performance change as workloads are added and security controls are enabled.
 
 Monitoring Tools and Purpose:
 
@@ -24,28 +24,28 @@ Monitoring Tools and Purpose:
 ## Testing Stages:
 **1.	Baseline Monitoring:**
 
-The system will be monitored in an idle state to establish reference values for CPU usage, memory consumption, disk activity and network behaviour.
+The system will be monitored in an idle state to establish reference values for CPU usage, memory consumption, disk activity, and network behaviour.
 
 **2.	Application Load Testing:**
 
-The system monitors performance metrics in real time, while selected applications and workload will be introduced to stress specific system resource.
+The system will be monitored in real time while selected applications and workloads are introduced to stress specific system resources.
 
 **3.	Performance Analysis:**
 
-The collected data will later be analysed to identify bottlenecks in CPU, memory, disk I/O, or network throughput. 
+Collected data will be analysed to identify bottlenecks in CPU, memory, disk I/O, or network throughput.
 
 **4.	Optimisation Testing:**
 
-The system will re-test to measure quantitative improvement after applying firewall rule refinement or memory configuration.
+The system will be re-tested after applying configuration changes to measure quantitative improvements.
 
 **5.	Record results:**
 
-Result will be recorded using screenshots, logs and structured tables and published to the GitHub page during later coursework weeks
+Results will be captured using screenshots, logs, and structured tables and later published on GitHub Pages during subsequent coursework weeks.
 
 ---
 
 ## Data Collection Method:
-I will perform data collection through terminal output captured via screenshots and, where appropriate, redirected to text files. Measurements will be taken at particular time intervals to compare between baseline, stressed and optimised states. This result will later be visualised using charts and graphs to support performance analysis in week 6.
+Performance data will be collected through terminal output captured via screenshots and, where appropriate, redirected to text files. Measurements will be taken at defined intervals to allow comparison between baseline, stressed, and optimised states. The collected results will later be visualised using charts and graphs during the performance analysis phase in Week 6.
 
 ---
 
@@ -92,7 +92,9 @@ The following threat model identifies key risks relevant to the architecture and
 This threat model directly informs the security controls planned for implementation in weeks 4 and 5.
 
 ## REFLECTION:
-This week, we focused on planning rather than implementation, but it shows how closely security and performance considerations are linked. Developing a structured performance testing methodology reinforced the importance of collecting consistent and comparable data rather that running ad-hoc tests. Creating a threat model also clarified why basic controls such as SSH hardening and firewall restrictions are crucial, even in a small virtualised environment. This planning phase ensure that future configuration and optimisation work is systematic, measurable and defensible. 
+Week 2 focused on planning rather than implementation, highlighting how closely security and performance considerations are linked. Developing a structured performance testing methodology reinforced the importance of collecting consistent and comparable data instead of running ad-hoc tests. Creating a threat model clarified why foundational controls such as SSH hardening and firewall restrictions are necessary even in a small virtualised environment.
+
+This planning phase ensures that future configuration and optimisation work is systematic, measurable, and defensible.
 
 ---
 
@@ -111,3 +113,4 @@ This week, we focused on planning rather than implementation, but it shows how c
 
 
 ⬅️ [Previous: Week 1](../Week1/Week1.md)  ⏭️ [Next: Week 3](../Week3/Week3.md)
+
