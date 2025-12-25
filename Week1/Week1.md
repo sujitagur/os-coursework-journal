@@ -215,8 +215,9 @@ This experience taught me the importance of validating infrastructure assumption
 [6] Oracle Corporation, "VirtualBox Host-Only Networking Explained," 2024.
     Available: https://www.virtualbox.org/manual/ch06.html#network_hostonly. Accessed: 15 Dec 2025.
       
- [ Back to Home](../index.md)  
+ ---
 
+⬅️ [Home](../index.md)  ⏭️ [Next: Week 2](../Week2/Week2.md)
 
 
 
