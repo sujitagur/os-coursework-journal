@@ -12,7 +12,7 @@ Both VMs are connected using a dual-adapter configuration:
 
 •	Adapter 2- Host-Only Network: provides a private, isolated internal network that exists only between the workstation and the server.
 
-## Part A - System Architecture Diagram:
+## Part A - System Architecture Diagram
 ![Architecture Diagram](./w1-architecture1.png)
 
 The system architecture follows a dual-system administration model containing a Linux workstation and a headless Linux server. The server does not expose a graphical interface and is managed exclusively via SSH.
@@ -21,8 +21,12 @@ Here, both virtual machines are connected via two network interfaces: a Host-Onl
 
 This setup is similar to how real cloud servers are managed, where servers are accessed through a private network rather than directly from the internet. It also ensures that all server administration occurs remotely. 
 
+---
+
 ## Part B - Distribution Selection Justification:
+
 Linux Distribution Family Comparison:
+
 |Family         |Example | Strengths |   weakness| Reason Not Selected |
 |---------------|--------|-----------|-----------|---------------------|
 |Debian Family   |Debian , Ubuntu|High stability, strong community |Debian packages are often outdated |Ubuntu offer stability with newer kernels and tooling|
@@ -30,7 +34,7 @@ Linux Distribution Family Comparison:
 |Arch Family	|Arch, Manjiro 	|Very flexible and up-to-date pacakages 	|Requires a lot of manual setup, high maintenance |Not Ideal security testing due to risk of instability|
 |SUSE Family	|OpenSUSE, SLES|	Powerful admin tools 	|More complex for beginners |Limited benefit relatives to coursework requirements|
 
-WHY I CHOSE UBUNTU SERVER 24.04.LTS:
+**WHY I CHOSE UBUNTU SERVER 24.04.LTS**
 
 I picked Ubuntu Server 24.04 LTS  due to its balance of stability, security and up-to-date features. The LTS provides five years of security updates, which is essential for maintaining a consistent security baseline throughout the coursework.
 
@@ -38,6 +42,7 @@ Ubuntu also includes AppArmor enabled by default, directly supports the mandator
 
   Even though other distributions offer stronger enterprise tooling, they come with unnecessary complexity for a controlled virtualised environment, which is required for this coursework and also provide zero benefits.
 
+---
 
 ## PART C: Workstation Configuration decision:
  
@@ -47,11 +52,12 @@ Ubuntu also includes AppArmor enabled by default, directly supports the mandator
 
   Using a Linux workstation also reduces the risk of accidental configuration changes on the Windows host system and ensures consistent behaviour when developing and executing scripts that will later run against the server.  
   
+---
 
 ## Part D: Network Configuration Documentation:
   In this section, I will explain how both VMs are connected inside VirtualBox using NAT and Host-Only networking, providing screenshots to illustrate the process.
 
-D.1 VirtualBox Network Adapters – Workstation VM
+**D.1 VirtualBox Network Adapters – Workstation VM**
 
 Adapter 1 — NAT (Internet Access)
 
@@ -65,26 +71,35 @@ The second network adapter is set to Host-Only, which connects the workstation d
 
 ![Adapter 2 (Host-Only)](./w1-adapter2.png)
 
-D.2 VirtualBox Network Adapters – Server VM
+**D.2 VirtualBox Network Adapters – Server VM**
 
 Adapter 1: NAT
+
 The first network adapter is a NAT similar to that in a workstation, and it is for external package updates.
+
 ![Adapter 3 (Host-Only)](./w1-adapter3.png)
 
 Adapter 2: Host-Only
+
 The second network adapter is set to Host-Only, for private SSH access for the workstation. This ensures the server is isolated and cannot be accessed from outside the host-only network.
+
 ![Adapter 4 (Host-Only)](./w1-adapter4.png)
 
 
-D.3 Host-Only Network Configuration(vboxnet0):
+**D.3 Host-Only Network Configuration(vboxnet0)**
 
 Adapter Settings:
+
 ![Adapter S (Host-Only)](./w1-adapterS.png)
+
 This shows the Host-Only network adapter(vboxnet0), IPv4 address 192.168.56.1 and IPv4 Network Mask 255.255.255.0.
+
 This address ensures that all VMs are connected to the Host-Only network.
 
 DHCP Server settings:
+
 ![DHCP 1 (Host-Only)](./w1-DHCP1.png)
+
 •	The DHCP Server for vboxnet0 is enabled and addresses between 192.168.56.101 -192.168.56.254.
 
 •	My server VM (192.168.56.102) and workstation VM (192.168.56.103) both use Ips inside this range.
@@ -108,11 +123,8 @@ At this stage, swap is intentionally disabled to allow direct observation of mem
   	
  ![free1](./w1-free1.png) 
 
- Summary:
 The server is allocated approximately 3.8 GB of RAM, with minimal usage at baseline due to the absence of active workloads. This provides sufficient headroom for essential security services such as SSH, firewall rules, and fail2ban, while still allowing controlled stress and application testing in later phases. Monitoring memory behaviour without swap enabled will allow clearer identification of memory saturation and performance degradation under load.
   
-
-
 2. Disk Usage
 
 Command:  df -h
@@ -133,7 +145,7 @@ Purpose: It confirmed the operating system version
 
 Summary: The server is running Ubuntu Server 24.04.3 LTS (noble)
 
-4.	Kernel and System Information
+4. Kernel and System Information
 
 Command: uname -a
    
@@ -169,7 +181,7 @@ Result:
 
 •	enp0s8 (Host-Only): 192.168.56.103
 
-Why This Matters
+**Why This Matters**
 
  These results confirm that an isolated Host-Only network has successfully connected both virtual machines. This setup ensures that all administration server is run remotely via SSH, meet the necessary architectural and security requirements.
 
@@ -180,7 +192,7 @@ Why This Matters
  
 Resolving this issue required understanding that Linux networking is dependent not only on operating system configuration but also on hypervisor-level networking. Rebuilding the workstation VM and reapplying the Host-Only adapter corrected the issue.
 
-  This experience taught me the importance of validating infrastructure assumptions early in system deployment. A misconfigured network at this stage would invalidate all subsequent security hardening and performance testing. As a result, this week established a reliable foundation for remote administration, monitoring, and security enforcement in later phases.
+This experience taught me the importance of validating infrastructure assumptions early in system deployment. A misconfigured network at this stage would invalidate all subsequent security hardening and performance testing. As a result, this week established a reliable foundation for remote administration, monitoring, and security enforcement in later phases.
  
 
 ## References :
