@@ -1,26 +1,24 @@
 ## PHASE 3: APPLICATION SELECTION FOR PERFORMANCE TESTING (WEEK-3)
 
 ## 1. Overview:
-This Week 3 focus was to selected suitable application that can be used to test different types of system workloads. Instead of choosing random software, each application was selected to stress a specific part of the operating system such as CPU, memory, disk I/O, networking activity or server behavior.
+The focus of Week 3 was to select suitable applications for evaluating different types of system workloads. Instead of using random software, each application was deliberately chosen to stress a specific component of the operating system, including CPU, memory, disk I/O, network activity, and long-running server processes.
 
-This application will be used later in the coursework to observe how the Linux server behaves under load, identify performance bottlenecks, and analyses the effects of optimization.
-
-This Week 3 focus was to choose a set of applications that can stress different parts of the operating system. Here instead of doing random software testing, I have selected some tools that clearly represent specific workload types such as CPU usage, memory usage, disk I/O and network activity.
+These applications will be used in later phases to observe how the Linux server behaves under load, identify performance bottlenecks, and analyse the effects of system optimisation and security controls.
 
 ## 2.Application Selection Strategy:
-To make a balanced performance evaluation, each application represents a different workload type:
+To ensure a balanced and realistic performance evaluation, each selected application represents a different workload category:
 
-•	Memory-intensive workloads
+-CPU-intensive workloads
 
-•	Disk I/O-intensive workloads
+-Memory-intensive workloads
 
-•	Long-running server-style workloads
+-Disk I/O–intensive workloads
 
-•	CPU-intensive workloads
+-Network-intensive workloads
 
-•	Network-intensive server-style workloads
+-Long-running server-style workloads
 
-This approach reflects how real servers are used in practice, where multiple system resource is involved rather than a single metric.
+This approach reflects real-world server usage, where multiple system resources are often stressed simultaneously rather than in isolation.
 
 
 ## 3.Application Selection Matrix:
@@ -56,6 +54,7 @@ stress-ng --version
 apache2 -v
  
 These confirmations ensure that all selected applications are correctly installed and ready for performance testing in later phases.
+
 ## 5. Expected Resource Profiles
 Before running any tests, the expected behaviour of each application was documented to allow comparison with real results later.
 
@@ -113,8 +112,7 @@ All monitoring will be performed remotely over SSH form the workstation during t
 |ss -tuln	|View active network connections       |
 |iftop	  |Observe system logs during load       |
 
-Each test will be run individually to avoid overlapping workloads and to keep results clear.
-
+Each workload will be tested individually to avoid overlapping results and ensure clear, interpretable data.
 
 ## 7. Example Test Commands (Planned)
 The following commands demonstrate how the workloads will be generated in later phases:
@@ -141,8 +139,9 @@ iperf3 -s
 iperf3 -c 192.168.56.102
 
 ## 8. Reflection
-This week focused on planning rather than running performance tests. Selecting the right applications helped me understand how different system resources can become bottlenecks under load. Writing down expected behaviour before testing also made it clear why performance testing needs structure rather than random experimentation. This preparation will make it easier to analyse results and evaluate optimisation decisions later in the coursework.
+Week 3 focused on planning rather than executing performance tests. Selecting appropriate applications clarified how different system resources can become bottlenecks under load. Documenting expected behaviour before testing reinforced the importance of structured performance evaluation instead of ad-hoc experimentation.
 
+This preparation will support accurate analysis and informed optimisation decisions in later phases of the coursework.
 
 ## 9. REFERENCES:
 [1] Canonical Ltd., “stress-ng Manual Page,” Ubuntu Documentation, 2024. [Online]. Available: https://manpages.ubuntu.com/manpages/noble/en/man1/stress-ng.1.html. [Accessed: 14-Dec-2025].
@@ -155,5 +154,6 @@ This week focused on planning rather than running performance tests. Selecting t
 
 
 ⬅️ [Previous: Week 2](../Week2/Week2.md)  ⏭️ [Next: Week 4](../Week4/Week4.md)
+
 
 
