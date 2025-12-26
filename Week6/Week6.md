@@ -57,6 +57,7 @@ top
 The test caused a significant increase in CPU utilisation, with the stress-ng processes consuming nearly all available CPU resources. The system load average increased noticeably, while memory usage remained largely stable.
  
 ![w6-cpu-load-top.png](Week6-image/w6-cpu-load-top.png)
+
 This behaviour demonstrates effective CPU saturation and confirms that the workload successfully stressed the processor without introducing memory pressure.
 
 ## Memory-Intensive Workload Testing
@@ -66,8 +67,9 @@ Command used:
 ```bash
 stress-ng --vm 1 --vm-bytes 1G --timeout 60s
 ```
-img 
+ 
 ![w6-memory_workload](Week6-image/w6-memory0.1.png)
+
 Memory usage was monitored using:
 ```bash
 free -h
@@ -86,6 +88,7 @@ Command used:
 stress-ng --hdd 1 --timeout 60s
 ```
 ![w6-performance0.1](Week6-image/w6-performance0.1.png) 
+
 System activity was monitored using:
 ```bash
 vmstat 1 5
@@ -103,6 +106,7 @@ On the server:
 iperf3 -s 
 ```
 ![w6-network0.1](Week6-image/w6-network0.1.png) 
+
 On the workstation:
 ```bash
 iperf3 -c 192.168.56.102
@@ -178,6 +182,7 @@ Accessed: 25 Dec. 2025.
 
 
 ⬅️ [Previous: Week 5](../Week5/Week5.md)  ⏭️ [Next: Week 7](../Week7/Week7.md)
+
 
 
 
