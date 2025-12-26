@@ -36,23 +36,33 @@ These tools are lightweight, well-documented and widely used in Linux environmen
 ## 4. Installation Documentation (via SSH)
 All required applications were installed remotely on the server VM using SSH from the workstation, in line with the coursework requirements.
 
+```bash
 sudo apt update
-
 sudo apt install stress-ng iperf3 apache2 -y
- 
+```
+ [install stress ](Week3-imgage/w3-1st.png)
+
 Installation of performance testing applications (stress-ng, iperf3, and Apache) on the server via SSH.
 After installation, the Apache web server runs automatically as a systemd-managed service.
+```bash
 systemctl status apache2
- 
+```
+[system status ](Week3-imgage/w3-2nd.png)
 
 Apache web server running as an active systemd service following installation.
+
 To verify successful installation, application versions were checked:
 
+```bash
 stress-ng --version
- 
+ ```
+[stress ](Week3-imgage/w3-3rd.png)
 
+```bash
 apache2 -v
- 
+ ```
+[apache ](Week3-imgage/w3-4th.png)
+
 These confirmations ensure that all selected applications are correctly installed and ready for performance testing in later phases.
 
 ## 5. Expected Resource Profiles
@@ -117,27 +127,28 @@ Each workload will be tested individually to avoid overlapping results and ensur
 ## 7. Example Test Commands (Planned)
 The following commands demonstrate how the workloads will be generated in later phases:
 **•	CPU stress:**
-
+```bash
 stress-ng --cpu 2 --timeout 60s
+```
 
 **•	Memory stress**
-
+```bash
 stress-ng --vm 1 --vm-bytes 1G --timeout 60s
-
+```
 **•	Disk I/O stress**
-
+```bash
 stress-ng --hdd 1 --timeout 60s
-
+```
 **Network throughput (iperf3)**
 
 **•	On server:**
-
+```bash
 iperf3 -s
-
+```
 **•	On workstation:**
-
+```bash
 iperf3 -c 192.168.56.102
-
+```
 ## 8. Reflection
 Week 3 focused on planning rather than executing performance tests. Selecting appropriate applications clarified how different system resources can become bottlenecks under load. Documenting expected behaviour before testing reinforced the importance of structured performance evaluation instead of ad-hoc experimentation.
 
@@ -154,6 +165,7 @@ This preparation will support accurate analysis and informed optimisation decisi
 
 
 ⬅️ [Previous: Week 2](../Week2/Week2.md)  ⏭️ [Next: Week 4](../Week4/Week4.md)
+
 
 
 
