@@ -26,7 +26,7 @@ Network exposure was assessed using nmap to verify that only intended services w
 ```bash
 nmap -sS 192.168.56.102
 ```
-The scan confirmed that only SSH (port 22) was accessible. No unexpected or unauthorised services were detected, validating the effectiveness of the firewall configuration and access control policies implemented in earlier phases. This result confirms that the system maintains a minimal network attack surface.
+The scan confirmed that **only SSH (port 22)** was accessible. No unexpected or unauthorised services were detected, validating the effectiveness of the firewall configuration and access control policies implemented in earlier phases. This result confirms that the system maintains a minimal network attack surface.
 
 ## 4. Access Control Verification
 
@@ -82,9 +82,9 @@ Despite comprehensive hardening, some residual risks remain, including:
 These risks are mitigated through automatic security updates, restricted service exposure, layered security controls, and the isolated Host-Only virtual network environment.
 
 ## 8. Final Evaluation and Reflection
-Week 7 demonstrated the importance of structured security auditing and system evaluation as part of professional system administration. The use of Lynis and nmap provided valuable insight into system hardening and network exposure, while access control and service audits confirmed effective enforcement of security best practices.
+Week 7 demonstrated the importance of structured security auditing and system evaluation as part of professional system administration. The use of Lynis and `nmap` provided valuable insight into system hardening and network exposure, while access control and service audits confirmed effective enforcement of security best practices.
 
-This final phase validated that the Ubuntu Server is securely configured, well-maintained, and prepared for real-world operational use. The coursework as a whole reinforced how layered security controls—firewalls, SSH hardening, intrusion detection, mandatory access control, and automation—work together to reduce attack surface and improve system resilience.
+This final phase validated that the Ubuntu Server is securely configured, well-maintained, and prepared for real-world operational use. The coursework as a whole reinforced how layered security control: firewalls, SSH hardening, intrusion detection, mandatory access control, and automation work together to reduce attack surface and improve system resilience.
 
 ## 9. References
 
@@ -101,3 +101,4 @@ Available: https://ubuntu.com/security
 Accessed: 26 Dec. 2025.
 
 ⬅️ [Previous: Week 6](../Week6/Week6.md)  ⏭️ [Home](../index.md)
+
