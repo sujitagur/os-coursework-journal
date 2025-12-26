@@ -16,7 +16,7 @@ sudo aa-status
 ```
 The output confirmed that AppArmor was active and enforcing security profiles for system services, demonstrating that mandatory access control was enabled.
 
- w5-step1-apparmor-status.png
+![w5-step1-apparmor-status.png](Week5-image/w5-step1-apparmor-status.png)
 
 ## 2. Automatic Security Updates
 To reduce exposure to known vulnerabilities, automatic security updates were enabled using Ubuntu’s unattended-upgrades mechanism. This ensures that critical security patches are applied automatically without requiring manual intervention.
@@ -32,11 +32,10 @@ systemctl list-timers | grep apt
 
 The presence of active `apt-daily` and `apt-daily-upgrade` timers confirmed that automatic security updates were enabled.
 
- 
-w5-step2-unattended-enable.png
+![w5-step2-unattended-enable](Week5-image/w5-step2-unattended-enable.png)
 
- 
-w5-step2-apt-timers.png
+
+![w5-step2-apt-timers](Week5-image/w5-step2-apt-timers.png)
 Figure: Active systemd timers confirming automated security updates are scheduled and running.
 
 
@@ -56,8 +55,7 @@ sudo fail2ban-client status sshd
 ```
 The output confirmed that the SSH jail was active and monitoring authentication logs.
 
- 
-![fail2ban SSH Jail](./images/w5-step3-fail2ban-sshd.png)
+![fail2ban SSH Jail](Week5-image/w5-step3-fail2ban-sshd.png)
 
 ## 4. Security Baseline Verification Script
 To ensure that all security controls could be verified consistently, a server-side security baseline verification script (security-baseline.sh) was developed. This script automates validation of the core security configurations implemented in Weeks 4 and 5.
@@ -78,7 +76,8 @@ The script was executed on the server using a non-root administrative user:
 ```bash
 ./security-baseline.sh
 ```
-w5-step4-security-baseline.png
+![w5-step4-security-basline](Week5-image/w5-step4-security-baseline.png)
+
 
 **Important note:**
 
@@ -100,8 +99,8 @@ The script was executed from the workstation using:
 ```bash
 ./monitor-server.sh
 ```
- 
-w5-step5-monitor-server.png
+![w5-step5-monitor-server.png](Week5-image/w5-step5-monitor-server.png) 
+
 
 ## Reflection
 
@@ -124,3 +123,5 @@ Available: https://www.fail2ban.org/wiki/index.php/Main_Page
 [4] Linux Foundation, “System Administration and Monitoring,” 2023.
 Available: https://www.kernel.org/doc/
 [Accessed: 25-Dec-2025].
+
+⬅️ [Previous: Week 4](../Week4/Week4.md)  ⏭️ [Next: Week 6](../Week6/Week6.md)
