@@ -177,3 +177,7 @@ Available: https://httpd.apache.org/docs/
 Accessed: 25 Dec. 2025.
 
 
+⬅️ [Previous: Week 5](../Week5/Week5.md)  ⏭️ [Next: Week 7](../Week7/Week7.md)
+
+
+
