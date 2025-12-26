@@ -119,7 +119,7 @@ At this stage, swap is intentionally disabled to allow direct observation of mem
 
 **1.	Memory Information**
 
- Command: 'free -h'
+ Command: `free -h`
 
  Purpose: Analyse memory and swap usages and print the result in human-readable units (Mib/    Gib). 
   	
@@ -129,7 +129,7 @@ The server is allocated approximately 3.8 GB of RAM, with minimal usage at basel
   
 **2. Disk Usage**
 
-Command:  'df -h'
+Command:  `df -h`
 
 Purpose: It displays disk layout and free space in a human-readable format 
 
@@ -139,7 +139,7 @@ Purpose: It displays disk layout and free space in a human-readable format
 
 **3. Distribution Information**
 
-Command: 'lsb_release -a'
+Command: `lsb_release -a`
  
 Purpose: It confirmed the operating system version 
 
@@ -149,7 +149,7 @@ Summary: The server is running Ubuntu Server 24.04.3 LTS (noble)
 
 **4. Kernel and System Information**
 
-Command: 'uname -a'
+Command: `uname -a`
    
 Purpose: Display kernel version and system architecture
 
@@ -159,7 +159,7 @@ Summary: Kernel version: 6.8.0-40-generic on x86_64 architecture
 
 **5. Network Interfaces**
 
-Command: 'ip addr'
+Command: `ip addr`
 
 Purpose: Display all network interfaces and assigned IP addresses. Used to validate Correct VirtualBox networking(NAT + Host-Only).
 
