@@ -14,7 +14,7 @@ sudo adduser adminuser
 sudo usermod -aG sudo adminuser
 id adminuser
  ```
-imgg
+[non-root adminstrative](Week4-image/w4-1st.png)
 
 The output confirmed that the user was successfully added to the sudo group, allowing administrative privileges when required.
 
@@ -29,8 +29,8 @@ sudo whoami
 ```
 The output confirmed successful SSH authentication and correct privilege escalation using sudo, verifying that the administrative user was configured correctly.
 
- 
-w4-step2-adminuser-ssh-login.png
+[step2-adminuser-ssh-login ](Week4-image/w4-step2-adminuser-ssh-login.png) 
+
 
 ## 3. SSH Key-Based Authentication
 To eliminate password-based authentication and improve security, SSH key-based authentication was configured.
@@ -40,8 +40,11 @@ SSH keys were generated on the workstation and securely copied to the server. Af
 ssh adminuser@192.168.56.102
 ```
 The server accepted the SSH key without prompting for a password, confirming successful key-based authentication.
- 
-w4-step3-ssh-key-login.png
+
+[w4-step3-ssh-key-login](Week4-image/w4-step3-ssh-key-login.png)
+
+
+
 
 
 ## 4. SSH Hardening
@@ -81,8 +84,9 @@ sudo systemctl restart ssh
  ![SSH hardening configuration proof](Week4-image/w4-step4-sshd-config-proof.png)
 
 SSH configuration hardened by disabling root login and password authentication.
- 
-w4-step4-ssh-login-after-hardening.png
+
+[w4-step3-ssh-key-login](Week4-image/w4-step3-ssh-key-login.png)
+
 
 Successful SSH access using key-based authentication confirmed that hardening was applied correctly without causing lockout.
 
@@ -104,7 +108,8 @@ This configuration ensures that:
 
 •	Outbound traffic remains unrestricted for updates and monitoring
  
-w4-step5-ufw-status.png
+[w4-step5-ufw-status.png](Week4-image/w4-step5-ufw-status.png)
+
 
 Firewall configured to restrict SSH access to the trusted workstation only.
 
@@ -115,7 +120,8 @@ uname -a
 ```
 This confirms that all administration was performed remotely and securely via SSH.
 
- w4-step6-remote-command.png
+[w4-step6-remote-command.png](Week4-image/w4-step6-remote-command.png)
+
 
 This confirms that all administration was performed remotely and securely via SSH.
 
@@ -139,4 +145,5 @@ Available: https://documentation.ubuntu.com/server/how-to/security/firewalls/
 [3] OpenSSH Project, “OpenSSH Manual Pages,” 2024.
 Available: https://man.openbsd.org/sshd_config
 [Accessed: 25-Dec-2025].
+
 
