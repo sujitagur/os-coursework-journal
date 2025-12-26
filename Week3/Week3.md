@@ -40,14 +40,15 @@ All required applications were installed remotely on the server VM using SSH fro
 sudo apt update
 sudo apt install stress-ng iperf3 apache2 -y
 ```
- [install stress ](Week3-imgage/w3-1st.png)
+ ![install stress](Week3-image/w3-1st.png)
 
 Installation of performance testing applications (stress-ng, iperf3, and Apache) on the server via SSH.
 After installation, the Apache web server runs automatically as a systemd-managed service.
 ```bash
 systemctl status apache2
 ```
-[system status ](Week3-imgage/w3-2nd.png)
+![system status](Week3-image/w3-2nd.png)
+
 
 Apache web server running as an active systemd service following installation.
 
@@ -56,12 +57,12 @@ To verify successful installation, application versions were checked:
 ```bash
 stress-ng --version
  ```
-[stress ](Week3-imgage/w3-3rd.png)
+![stress](Week3-image/w3-3rd.png)
 
 ```bash
 apache2 -v
  ```
-[apache ](Week3-imgage/w3-4th.png)
+![apache ](Week3-image/w3-4th.png)
 
 These confirmations ensure that all selected applications are correctly installed and ready for performance testing in later phases.
 
@@ -165,6 +166,7 @@ This preparation will support accurate analysis and informed optimisation decisi
 
 
 ⬅️ [Previous: Week 2](../Week2/Week2.md)  ⏭️ [Next: Week 4](../Week4/Week4.md)
+
 
 
 
