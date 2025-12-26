@@ -221,7 +221,7 @@ This experience taught me the importance of validating infrastructure assumption
       
  ---
 
-⬅️ [Home](../index.md)  ⏭️ [Next: Week 2](../Week2/Week2.md)
+⬅️ [Home](../README.md)  ⏭️ [Next: Week 2](../Week2/Week2.md)
 
 
 
