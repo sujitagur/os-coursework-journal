@@ -8,15 +8,15 @@ These applications will be used in later phases to observe how the Linux server 
 ## 2.Application Selection Strategy:
 To ensure a balanced and realistic performance evaluation, each selected application represents a different workload category:
 
--CPU-intensive workloads
+1. CPU-intensive workloads
 
--Memory-intensive workloads
+2. Memory-intensive workloads
 
--Disk I/O–intensive workloads
+3. Disk I/O–intensive workloads
 
--Network-intensive workloads
+4. Network-intensive workloads
 
--Long-running server-style workloads
+5. Long-running server-style workloads
 
 This approach reflects real-world server usage, where multiple system resources are often stressed simultaneously rather than in isolation.
 
@@ -24,11 +24,11 @@ This approach reflects real-world server usage, where multiple system resources 
 ## 3.Application Selection Matrix:
 |Application	       |Workload Type     |Reason for selection                                       |
 |--------------------|------------------|-----------------------------------------------------------|
-|stress-ng           |CPU and Memory 	  |Commonly used stress testing tool with fine-grained control|
-|stress-ng (I/O mode)|Disk I/O	        |Generates disk read/write activity for storage testing     |
-|iperf3	             |Network throughput|Standard tool for measuring network bandwidth              |
-|Ping	               |Network latency	  |Simple way to measure latency and packet loss              |
-|Apache2	           |Server workload	  |Represents a real-world web server service                 |
+|`stress-ng`           |CPU and Memory 	  |Commonly used stress testing tool with fine-grained control|
+|`stress-ng` (I/O mode)|Disk I/O	        |Generates disk read/write activity for storage testing     |
+|`iperf3`	             |Network throughput|Standard tool for measuring network bandwidth              |
+|`Ping`	               |Network latency	  |Simple way to measure latency and packet loss              |
+|`Apache2`	           |Server workload	  |Represents a real-world web server service                 |
  
 These tools are lightweight, well-documented and widely used in Linux environments.
 
@@ -47,7 +47,7 @@ After installation, the Apache web server runs automatically as a systemd-manage
 ```bash
 systemctl status apache2
 ```
-![system status](Week3-image/w3-2nd.png)
+![system status](Week3-image/w-3_01.png)
 
 
 Apache web server running as an active systemd service following installation.
@@ -57,7 +57,7 @@ To verify successful installation, application versions were checked:
 ```bash
 stress-ng --version
  ```
-![stress](Week3-image/w3-3rd.png)
+![stress](Week3-image/w-3_stress-ng-version02.png)
 
 ```bash
 apache2 -v
@@ -69,7 +69,7 @@ These confirmations ensure that all selected applications are correctly installe
 ## 5. Expected Resource Profiles
 Before running any tests, the expected behaviour of each application was documented to allow comparison with real results later.
 
-**stress-ng (CPU workload)**
+**`stress-ng` (CPU workload)**
 
 •	High CPU usage across available cores
 
@@ -77,7 +77,7 @@ Before running any tests, the expected behaviour of each application was documen
 
 •	Moderate memory usage
 
-**stress-ng (Memory workload)**
+**`stress-ng` (Memory workload)**
 
 •	Rapid increase in RAM usage
 
@@ -85,7 +85,7 @@ Before running any tests, the expected behaviour of each application was documen
 
 •	Useful for identifying memory limits
 
-**stress-ng (Disk I/O workload)**
+**`stress-ng` (Disk I/O workload)**
 
 •	Increased disk read/write operations
 
@@ -93,7 +93,7 @@ Before running any tests, the expected behaviour of each application was documen
 
 •	Useful for testing filesystem performance
 
-**iperf3**
+**`iperf3`**
 
 •	High network throughput 
 
@@ -101,7 +101,7 @@ Before running any tests, the expected behaviour of each application was documen
 
 •	Minimal CPU and disk impact
 
-**apache2**
+**`apache2`**
 
 •	Low resource usage when idle
 
@@ -117,11 +117,11 @@ All monitoring will be performed remotely over SSH form the workstation during t
 
 |Tool	    |Purpose                               |
 |---------|--------------------------------------|
-|top/htop	|Monitor CPU and memory usage          |
-|vmstat  	|View CPU, memory, and system activity |
-|ioptop	  |Monitor disk read/write activity      |
-|ss -tuln	|View active network connections       |
-|iftop	  |Observe system logs during load       |
+|`top/htop`	|Monitor CPU and memory usage          |
+|`vmstat`  	|View CPU, memory, and system activity |
+|`ioptop`	  |Monitor disk read/write activity      |
+|`ss -tuln`	|View active network connections       |
+|`iftop`	  |Observe system logs during load       |
 
 Each workload will be tested individually to avoid overlapping results and ensure clear, interpretable data.
 
@@ -166,6 +166,7 @@ This preparation will support accurate analysis and informed optimisation decisi
 
 
 ⬅️ [Previous: Week 2](../Week2/Week2.md)  ⏭️ [Next: Week 4](../Week4/Week4.md)
+
 
 
 
