@@ -69,16 +69,16 @@ This checklist ensures that all security controls are measurable, verifiable and
 
 To validate the planned security and performance testing methodology, basic verification commands were executed without altering system configuration. These checks confirm that remote administration and monitoring can be performed as required in later phases.
 
-![Ping Success ](Week2-image/w2-ping-sucess.png)
- 
+1. Ping success
+![Ping Success ](Week2-image/PingSuccess.png)
  *ICMP ping test confirming Host-Only network connectivity between the workstation and server.*
 
+2. SSH success
 ![SSH Success](Week2-image/w2-ssh-success.png)
- 
  *Successful SSH connection from the workstation to the server over the Host-Only network.*
  
-![HTOP Monitoring](Week2-imgage/w2-htop.png)
- 
+3. HTOP Monitoring
+![HTOP Monitoring](Week2-image/w2-htop.png)
  *Real-time system monitoring using htop to demonstrate planned performance observation tools.*
 
 ## Thread Model:
@@ -113,5 +113,6 @@ This planning phase ensures that future configuration and optimisation work is s
 
 
 ⬅️ [Previous: Week 1](../Week1/Week1.md)  ⏭️ [Next: Week 3](../Week3/Week3.md)
+
 
 
