@@ -100,5 +100,6 @@ Accessed: 26 Dec. 2025.
 Available: https://ubuntu.com/security
 Accessed: 26 Dec. 2025.
 
-⬅️ [Previous: Week 6](../Week6/Week6.md)  ⏭️ [Home](../index.md)
+⬅️ [Previous: Week 6](../Week6/Week6.md)  ⏭️ [Home](../README.md)
+
 
