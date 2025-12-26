@@ -39,10 +39,9 @@ free -h
 df -h
 vmstat 1 5
 ```
-The results showed low CPU utilisation, high available memory, minimal disk activity, and no swap usage. This confirmed that the system was stable and idle prior to testing, providing a reliable baseline for comparison.
+The results showed low CPU utilisation, high available memory, minimal disk activity, and no swap usage. This confirmed that the system was stable and idle before testing, providing a reliable baseline for comparison.
  
-w6-baseline-performance.png
-
+![w6-baseline-performance](Week6-image/w6-baseline-performance.png)
 
 ## CPU-Intensive Workload Testing
 A CPU stress test was performed to observe processor utilisation and load behaviour under sustained computation.
@@ -57,8 +56,7 @@ top
 ```
 The test caused a significant increase in CPU utilisation, with the stress-ng processes consuming nearly all available CPU resources. The system load average increased noticeably, while memory usage remained largely stable.
  
-w6-cpu-load-top.png
-
+![w6-cpu-load-top.png](Week6-image/w6-cpu-load-top.png)
 This behaviour demonstrates effective CPU saturation and confirms that the workload successfully stressed the processor without introducing memory pressure.
 
 ## Memory-Intensive Workload Testing
@@ -69,14 +67,14 @@ Command used:
 stress-ng --vm 1 --vm-bytes 1G --timeout 60s
 ```
 img 
-
+![w6-memory_workload](Week6-image/w6-memory0.1.png)
 Memory usage was monitored using:
 ```bash
 free -h
 ```
 The results showed a clear increase in used memory and a reduction in available RAM. As swap space was initially disabled, memory pressure was observed directly without offloading to disk.
  
-w6-memory-load.png
+![w6-memory-load.png](Week6-image/w6-memory-load.png)
 
 This test highlighted how memory-intensive workloads can rapidly consume available RAM and impact system stability in the absence of swap.
 
@@ -87,14 +85,14 @@ Command used:
 ```bash
 stress-ng --hdd 1 --timeout 60s
 ```
+![w6-performance0.1](Week6-image/w6-performance0.1.png) 
 System activity was monitored using:
 ```bash
 vmstat 1 5
 ```
 The results showed increased disk I/O activity and higher I/O wait times, indicating that disk operations became a limiting factor under sustained load.
- 
-w6-disk-io.png
 
+![w6-disk-io.png](Week6-image/w6-disk-io.png) 
 This confirms that disk throughput can become a bottleneck when subjected to continuous read/write workloads.
 
 ## Network Performance Testing
@@ -104,13 +102,15 @@ On the server:
 ```bash
 iperf3 -s 
 ```
+![w6-network0.1](Week6-image/w6-network0.1.png) 
 On the workstation:
 ```bash
 iperf3 -c 192.168.56.102
 ```
 The test demonstrated consistently high throughput and low latency between the workstation and server, indicating that the private Host-Only network provided stable and efficient network performance.
  
-w6-network-iperf3.png
+
+![w6-network-iperf3](Week6-image/w6-network-iperf3.png) 
 
 
 ## Server Application Performance Testing (Apache)
@@ -120,14 +120,14 @@ Service status was verified using:
 ```bash
 sudo systemctl status apache2
 ```
- 
-w6-apache-status.png
+![w6-apache-status](Week6-image/w6-apache-status.png) 
+
 
 ## Basic HTTP responsiveness was tested using:
 ```bash
 curl http://localhost
  ```
-w6-apache-response.png
+![w6-apache-response.png](Week6-image/w6-apache-response.png) 
 
 **Optional light load testing was performed using:**
 ```bash
@@ -135,7 +135,7 @@ ab -n 50 -c 5 http://localhost/
 ```
 Apache remained responsive during concurrent requests, with stable CPU and memory usage. No service interruptions or errors were observed.
 
- img
+ ![w6-optional.01](Week6-image/w6-optional.01.png) 
  
 
 ## Performance Data Summary
@@ -175,4 +175,5 @@ Accessed: 25 Dec. 2025.
 [3] Apache Software Foundation, Apache HTTP Server Documentation, 2024.
 Available: https://httpd.apache.org/docs/
 Accessed: 25 Dec. 2025.
+
 
